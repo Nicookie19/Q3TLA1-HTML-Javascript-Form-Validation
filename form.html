@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Data Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Data Sheet</h1>
+        <form id="personalForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required maxlength="64" />
+                <input type="text" id="middleName" name="middleName" placeholder="Middle Name" maxlength="64" />
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required maxlength="64" />
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo" name="photo" accept="image/*" />
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required />
+            </div>
+            <div class="form-group">
+                <label for="birthLocation">Birth Location:</label>
+                <input type="text" id="birthLocation" name="birthLocation" maxlength="64" required />
+            </div>
+            <div class="form-group">
+                <label>Sex/Gender:</label>
+                <input type="radio" id="male" name="gender" value="Male" required />
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" />
+                <label for="female">Female</label>
+            </div>
+            <div class="form-group">
+                <label for="civilStatus">Civil Status:</label>
+                <select id="civilStatus" name="civilStatus" required>
+                    <option value="">Select</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nationality:</label>
+                <input type="text" id="nationality" name="nationality" maxlength="64" required />
+            </div>
+            <div class="form-group">
+                <label for="religion">Religion:</label>
+                <input type="text" id="religion" name="religion" maxlength="64" required />
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="number" id="contactNumber" name="contactNumber" required max="99999999999999999999" oninput="if(this.value.length>20)this.value=this.value.slice(0,20);" placeholder="Contact Number (up to 20 digits)" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="homeAddress">Home Address:</label>
+                <textarea id="homeAddress" name="homeAddress" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Emergency Contact:</label>
+                <input type="text" id="emergencyName" name="emergencyName" placeholder="Name" maxlength="64" required />
+                <input type="text" id="emergencyRelationship" name="emergencyRelationship" placeholder="Relationship" maxlength="64" required />
+                <input type="number" id="emergencyContact" name="emergencyContact" placeholder="Contact Number (up to 20 digits)" required max="99999999999999999999" oninput="if(this.value.length>20)this.value=this.value.slice(0,20);" />
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" maxlength="64" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" maxlength="64" required />
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" maxlength="64" required />
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

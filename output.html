@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal Data Sheet Output</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Data Sheet Output</h1>
+        <div id="outputData"></div>
+        <a href="form.html">Back to Form</a>
+    </div>
+    <script>
+        window.onload = function() {
+            const outputDiv = document.getElementById('outputData');
+            const data = JSON.parse(localStorage.getItem('personalData') || '{}');
+
+            if (!data || Object.keys(data).length === 0) {
+                outputDiv.innerHTML = '<p>No data found. Please fill out the form first.</p>';
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.style.width = '100%';
+            table.style.borderCollapse = 'collapse';
+
+            function addRow(label, value) {
+                const row = document.createElement('tr');
+                const cellLabel = document.createElement('td');
+                cellLabel.textContent = label;
+                cellLabel.style.fontWeight = 'bold';
+                cellLabel.style.border = '1px solid #ddd';
+                cellLabel.style.padding = '8px';
+                const cellValue = document.createElement('td');
+                cellValue.style.border = '1px solid #ddd';
+                cellValue.style.padding = '8px';
+
+                if (label === 'Photo' && value) {
+                    const img = document.createElement('img');
+                    img.src = value;
+                    img.alt = 'Uploaded Photo';
+                    img.style.maxWidth = '150px';
+                    img.style.borderRadius = '8px';
+                    cellValue.appendChild(img);
+                } else {
+                    cellValue.textContent = value;
+                }
+
+                row.appendChild(cellLabel);
+                row.appendChild(cellValue);
+                table.appendChild(row);
+            }
+
+            addRow('First Name', data.firstName || '');
+            addRow('Middle Name', data.middleName || '');
+            addRow('Last Name', data.lastName || '');
+            addRow('Photo', data.photoDataUrl || '');
+            addRow('Date of Birth', data.dob || '');
+            addRow('Birth Location', data.birthLocation || '');
+            addRow('Sex/Gender', data.gender || '');
+            addRow('Civil Status', data.civilStatus || '');
+            addRow('Nationality', data.nationality || '');
+            addRow('Religion', data.religion || '');
+            addRow('Contact Number', data.contactNumber || '');
+            addRow('Email Address', data.email || '');
+            addRow('Home Address', data.homeAddress || '');
+            addRow('Emergency Contact Name', data.emergencyName || '');
+            addRow('Emergency Contact Relationship', data.emergencyRelationship || '');
+            addRow('Emergency Contact Number', data.emergencyContact || '');
+            addRow('Username', data.username || '');
+
+            outputDiv.appendChild(table);
+        };
+    </script>
+</body>
+</html>
